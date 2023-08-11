@@ -16,7 +16,7 @@ The parameters of the function are:
 
 ### test_deepfool.py
 
-We want to test DeepFool our model and dataset, we first call function `deepfool` in the deepfool.py to create adversarial example, then we calculate the accuracy of our model on the adversarial example. Finally, we display the adversarial example.
+We want to test DeepFool on our model and dataset, we first call function `deepfool` of deepfool.py to create adversarial example, then we calculate the accuracy of our model on the adversarial example. Finally, we display the adversarial example.
 
 ## Reference
 [1] S. Moosavi-Dezfooli, A. Fawzi, P. Frossard:
