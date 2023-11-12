@@ -8,11 +8,11 @@ def deepfool(image, net, num_classes=10, overshoot=0.02, max_iter=50):
 
     """
        :param image: Image of size HxWx3
-       :param net: network (input: images, output: values of activation **BEFORE** softmax).
+       :param net: network (input: source_images, output: values of activation **BEFORE** softmax).
        :param num_classes: num_classes (limits the number of classes to test against, by default = 10)
        :param overshoot: used as a termination criterion to prevent vanishing updates (default = 0.02).
        :param max_iter: maximum number of iterations for deepfool (default = 50)
-       :return: minimal perturbation that fools the classifier, number of iterations that it required, new estimated_label and perturbed image
+       :return: minimal perturbation that fools the classifier, number of iterations that it required, encoded_images estimated_label and perturbed image
     """
     is_cuda = torch.cuda.is_available()
 
@@ -56,7 +56,7 @@ def deepfool(image, net, num_classes=10, overshoot=0.02, max_iter=50):
             fs[0, I[k]].backward(retain_graph=True)
             cur_grad = x.grad.data.cpu().numpy().copy()     # 计算当前梯度
 
-            # set new w_k and new f_k
+            # set encoded_images w_k and encoded_images f_k
             w_k = cur_grad - grad_orig                      # 计算新的weight
             f_k = (fs[0, I[k]] - fs[0, I[0]]).data.cpu().numpy()
 

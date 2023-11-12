@@ -12,7 +12,7 @@ from torchvision import transforms
 from tqdm import tqdm
 from model import ResNet18
 from deepfool import deepfool
-from train_model import model
+import model
 from PIL import Image
 
 
@@ -154,7 +154,7 @@ def main():
 
     # 参数设置
     parser = argparse.ArgumentParser(description="Pytorch CIFAR10 Training")
-    parser.add_argument('--outf', default='./model/', help='folder to output images and model checkpoints')
+    parser.add_argument('--outf', default='./model/', help='folder to output source_images and model checkpoints')
     args = parser.parse_args()
 
     # 加载并预处理数据集
